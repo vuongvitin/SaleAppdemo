@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-function addToCart(productId){
-    fetch(`/SpringMVCdemo1/api/cart/${productId}`).then(res => res.json()).then(data =>{
-        var d = document.getElementById("cart-counter");
-        if(d !== null)
-            d.innerText = data;        
-    });     
-}
+//function addToCart(productId){
+//    fetch(`/SpringMVCdemo1/api/cart/${productId}`).then(res => res.json()).then(data =>{
+//        var d = document.getElementById("cart-counter");
+//        if(d !== null)
+//            d.innerText = data;        
+//    });     
+//}
 
 function addComment(productId){
     fetch("/TourApp/api/add-comment", {
@@ -45,5 +45,26 @@ function addComment(productId){
     })
 }
 
+function addToCart(id, name, price){
+    event.preventDefault()
+    
+    fetch("/TourApp/api/cart", {
+        method: 'post',
+        body: JSON.stringify({
+            "productId;": 1,
+            "productName": name,
+            "price": price,
+            "quantity": 1
+        }),
+        headers:{
+            "Content-Type": "application/json"
+        }
+    }).then(function(res){
+        return res.json();
+    }).then(function(data){
+        let counter = document.getElementById("cartCounter")
+        counter.innerText = data
+    })
+}
 
             

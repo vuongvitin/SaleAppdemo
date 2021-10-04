@@ -12,3 +12,15 @@ and open the template in the editor.
 body {
     background-color: lightblue;
 }
+
+.fa {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+.fa:hover { 
+  color: blue;
+}
+.active { 
+  color: blue;
+}

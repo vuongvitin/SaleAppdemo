@@ -27,13 +27,37 @@
               <a class="nav-link" href="${catPath}">${cate.name}</a>
             </li>
         </c:forEach>
+            <li>
+                <a href="#" class="nav-link text-warning h5">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="badge badge-danger" id="cartCounter">0</div>
+                </a>
+            </li>
     </ul>
-    <form class="form-inline" action="<c:url value="/"></c:url>">
-        <input class="form-control mr-sm-2" type="text" name="kw" placeholder="Nhap tu khoa tiem kiem">
-        <button class="btn btn-success" type="submit">Tim kiem</button>
-    </form>
   </div>
 </nav>
+  <br>
+  <form class="form-inline" action="">
+        <div class="form-group">
+            <label for="sel1" class="text-danger font-weight-bold h3"">Giá từ:</label>
+            <select class="form-control" id="sel1" name="fp">
+              <option>1 triệu</option>
+              <option>2 triệu</option>
+              <option>3 triệu</option>
+              <option>4 triệu</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sel1" class="text-danger font-weight-bold h3">đến:</label>
+            <select class="form-control" id="sel1" name="tp">
+              <option>1 triệu</option>
+              <option>2 triệu</option>
+              <option>3 triệu</option>
+              <option>4 triệu</option>
+            </select>
+        </div>
+        <input class="form-control mr-sm-2 ml-3" type="text" name="kw" placeholder="Nhap tu khoa tiem kiem">
+        <button class="btn btn-success" type="submit">Tìm kiếm</button>
+ </form>
         
-
 

@@ -32,7 +32,7 @@ ${productCounter}
                 <div class="card-body">
                   <h4 class="card-title">${p.name}</h4>
                   <p class="card-text">${p.price} VND</p>
-                  <a href="#" class="btn btn-primary">Dat hang</a>
+                  <a href="#" class="btn btn-primary" onclick="addToCart(${p.id}, '${p.name}', ${p.price})">Dat hang</a>
             </div>      
             </div>
     </div>
@@ -60,7 +60,7 @@ ${productCounter}
                   <h4 class="card-title">${p[1]}</h4>
                   <p class="card-text">${p[2]} VND</p>
                   <p class="card-text">So luot dat hang: ${p[4]} luot</p>
-                  <a href="#" class="btn btn-primary">Dat hang</a>
+                  <a href="#" class="btn btn-primary" >Dat hang</a>
             </div>      
             </div>
     </div>

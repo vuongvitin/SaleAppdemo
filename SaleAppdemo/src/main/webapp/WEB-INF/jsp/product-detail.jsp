@@ -41,7 +41,9 @@
         <button type="button" onclick="addComment(${productId.id})" class="btn btn-primary">Gui binh luan</button>
     </div>   
 </form> 
-
+<div class="container">
+    <i id="button" class="fa fa-thumbs-up"></i>
+</div>
 
 <div id="commentArea">
     <c:forEach items="${productId.commentCollection}" var="comments" >
@@ -60,13 +62,24 @@
 
 
 <script>
+        $("#button").click(function(){
+            var allClass = this.classList.toString();
+            if (allClass.indexOf('active') == -1) {
+                this.classList += ' active';
+            }
+            if (allClass.indexOf('active') !== -1) {
+                document.getElementById("button").classList.remove("active");
+            }
+        })
+</script>
+
+<script>
     window.onload = function() {
         let dates = document.querySelectorAll(".mydate > i")
         for (var i = 0; i < dates.length; i++) {
             let d = dates[i]
             d.innerText = moment(d.innerText).fromNow();
         }
-        
     }
 </script>
 
