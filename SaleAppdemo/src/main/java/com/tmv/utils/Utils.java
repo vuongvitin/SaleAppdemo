@@ -13,8 +13,8 @@ import java.util.Map;
  * @author PC
  */
 public class Utils {
-    public static int q = 0;
     public static int countCart(Map<Integer, Cart> cart){
+        int q = 0;
         if(cart != null)
             for(Cart c: cart.values())
                 q += c.getQuantity();

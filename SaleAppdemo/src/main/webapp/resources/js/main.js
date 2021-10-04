@@ -51,7 +51,7 @@ function addToCart(id, name, price){
     fetch("/TourApp/api/cart", {
         method: 'post',
         body: JSON.stringify({
-            "productId;": 1,
+            "productId": id,
             "productName": name,
             "price": price,
             "quantity": 1
@@ -67,4 +67,41 @@ function addToCart(id, name, price){
     })
 }
 
+function updateCart(obj, productId){
+   fetch("/TourApp/api/cart", {
+        method: 'put',
+        body: JSON.stringify({
+            "productId": productId,
+            "productName": "",
+            "price": 0,
+            "quantity": obj.value
+        }),
+        headers:{
+            "Content-Type": "application/json"
+        }
+    }).then(function(res){
+        return res.json()
+    }).then(function (data){
+        let counter = document.getElementById("cartCounter")
+        counter.innerText = data
+    })
+}            
+
+function deleteCart(productId){
+    
+    if(confirm("Ban co chac chan xoa khong???") == true){
+            fetch(`/TourApp/api/cart/${productId}`, {
+        method: 'delete'
+        }).then(function(res){
+            return res.json()
+        }).then(function(data){
+            document.getElementById("cartCounter").innerText = data
             
+//            location.reload()
+            let row = document.getElementById(`Product${productId}`)
+
+            row.style.display = "none"
+        }) 
+    }
+
+}

@@ -28,9 +28,9 @@
             </li>
         </c:forEach>
             <li>
-                <a href="#" class="nav-link text-warning h5">
+                <a href="<c:url value="/cart"/>" class="nav-link text-warning h5">
                     <i class="fas fa-shopping-cart"></i>
-                    <div class="badge badge-danger" id="cartCounter">0</div>
+                    <div class="badge badge-danger" id="cartCounter">${cartCounter}</div>
                 </a>
             </li>
     </ul>

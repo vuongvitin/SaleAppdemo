@@ -28,7 +28,7 @@ public class APICommentController {
     private CommentService commentService;
     
     
-    @PostMapping(value = "/api/add-comment", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/api/add-comment", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Comment> addComment(@RequestBody Map<String, String> params){
         try{
             String content = params.get("content");

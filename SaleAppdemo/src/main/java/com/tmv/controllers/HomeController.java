@@ -7,10 +7,13 @@ package com.tmv.controllers;
 
 
 
+import com.tmv.pojos.Cart;
 import com.tmv.pojos.Category;
 import com.tmv.service.CategoryService;
 import com.tmv.service.ProductService;
+import com.tmv.utils.Utils;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +36,9 @@ public class HomeController {
     
     
     @ModelAttribute
-    public void commmonAttrs(Model model){
+    public void commmonAttrs(Model model, HttpSession session){
         model.addAttribute("categories", this.categoryService.getCategories());
+        model.addAttribute("cartCounter", Utils.countCart((Map<Integer, Cart>) session.getAttribute("cart")));
     }
     
     @RequestMapping("/")

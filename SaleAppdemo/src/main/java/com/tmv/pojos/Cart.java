@@ -12,24 +12,12 @@ package com.tmv.pojos;
  * @author PC
  */
 public class Cart {
-    private int productId;
+    private Integer productId;
     private String productName;
     private Long price;
     private int quantity;
 
-    /**
-     * @return the productId
-     */
-    public int getProductId() {
-        return productId;
-    }
 
-    /**
-     * @param productId the productId to set
-     */
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
 
     /**
      * @return the productName
@@ -71,5 +59,19 @@ public class Cart {
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    /**
+     * @return the productId
+     */
+    public Integer getProductId() {
+        return productId;
+    }
+
+    /**
+     * @param productId the productId to set
+     */
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 }
