@@ -6,6 +6,7 @@
 package com.tmv.pojos;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,6 +41,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "User.findByActive", query = "SELECT u FROM User u WHERE u.active = :active"),
     @NamedQuery(name = "User.findByUserRole", query = "SELECT u FROM User u WHERE u.userRole = :userRole")})
 public class User implements Serializable {
+
+    @OneToMany(mappedBy = "user")
+    private Collection<SaleOrder> saleOrderCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -195,6 +201,15 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.tmv.pojos.User[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<SaleOrder> getSaleOrderCollection() {
+        return saleOrderCollection;
+    }
+
+    public void setSaleOrderCollection(Collection<SaleOrder> saleOrderCollection) {
+        this.saleOrderCollection = saleOrderCollection;
     }
     
 }

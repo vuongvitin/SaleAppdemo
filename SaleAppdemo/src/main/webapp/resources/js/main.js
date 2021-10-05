@@ -82,8 +82,9 @@ function updateCart(obj, productId){
     }).then(function(res){
         return res.json()
     }).then(function (data){
-        let counter = document.getElementById("cartCounter")
-        counter.innerText = data
+        document.getElementById("cartCounter").innerText = data.counter
+        let amount = document.getElementById("amountCart")
+        amount.innerText = data.amount
     })
 }            
 
@@ -95,13 +96,26 @@ function deleteCart(productId){
         }).then(function(res){
             return res.json()
         }).then(function(data){
-            document.getElementById("cartCounter").innerText = data
-            
+            document.getElementById("cartCounter").innerText = data.counter
+            let amount = document.getElementById("amountCart")
+            amount.innerText = data.amount
 //            location.reload()
             let row = document.getElementById(`Product${productId}`)
 
             row.style.display = "none"
         }) 
-    }
-
+    }  
+}
+     function pay(){
+        if(confirm("Ban co chac chan thanh toan???") == true){
+            fetch("/TourApp/api/pay", {
+                method: "post"
+            }).then(function(res){
+                return res.json();
+            }).then(function(code){
+                console.info(code)
+                
+                location.reload();
+            })
+        }
 }

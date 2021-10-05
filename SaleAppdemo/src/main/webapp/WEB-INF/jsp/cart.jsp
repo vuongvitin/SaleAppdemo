@@ -40,6 +40,11 @@
             </tr>
         </c:forEach>    
     </table>
-   <input type="button" value="Thanh toan" class="btn btn-danger" />    
+    <div>
+        <h4 class="text-info"><span id="amountCart">Tong tien la: ${cartStats.amount} VND</span></h4>
+    </div>
+    
+    <br>
+    <input type="button" onclick="pay()"  value="Thanh toan" class="btn btn-danger" />    
     
 </c:if>    

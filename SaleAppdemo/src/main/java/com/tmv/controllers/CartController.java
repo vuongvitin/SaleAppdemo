@@ -6,8 +6,10 @@
 package com.tmv.controllers;
 
 import com.tmv.pojos.Cart;
+import com.tmv.utils.Utils;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import org.springframework.objenesis.instantiator.util.UnsafeUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,10 @@ public class CartController {
             model.addAttribute("carts", cart.values());
         else
             model.addAttribute("carts", null);
-                
+         
+        model.addAttribute("cartStats", Utils.cartStats(cart));
+        
+        
         return "cart";
     }
 }

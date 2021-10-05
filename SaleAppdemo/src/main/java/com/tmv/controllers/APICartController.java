@@ -6,11 +6,14 @@
 package com.tmv.controllers;
 
 import com.tmv.pojos.Cart;
+import com.tmv.service.OrderService;
 import com.tmv.utils.Utils;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @ControllerAdvice
 public class APICartController {
+    @Autowired
+    private OrderService orderService;
+    
     @PostMapping("/api/cart")
     public int addToCart(@RequestBody Cart params, HttpSession session){
         
@@ -49,7 +55,7 @@ public class APICartController {
     
     @PutMapping("/api/cart")
 //    @ResponseStatus(HttpStatus.OK)
-    public int updateCartItem(@RequestBody Cart params, HttpSession session){
+    public ResponseEntity<Map<String, String>> updateCartItem(@RequestBody Cart params, HttpSession session){
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
         if(cart == null)
             cart = new HashMap<>();
@@ -63,11 +69,11 @@ public class APICartController {
         
         session.setAttribute("cart", cart);
         
-        return Utils.countCart(cart);
+        return new ResponseEntity<>(Utils.cartStats(cart), HttpStatus.OK );
     }
     
     @DeleteMapping("/api/cart/{productId}")
-    public int deleteCartItem(@PathVariable(value = "productId") int productId, HttpSession session){
+    public ResponseEntity<Map<String, String>> deleteCartItem(@PathVariable(value = "productId") int productId, HttpSession session){
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
         if(cart != null && cart.containsKey(productId)){
             cart.remove(productId);
@@ -77,6 +83,18 @@ public class APICartController {
                 
     
         
-        return Utils.countCart(cart);
+        return new ResponseEntity<>(Utils.cartStats(cart), HttpStatus.OK );
     }
+    
+    @PostMapping("/api/pay")
+    public HttpStatus pay(HttpSession session){
+        if(this.orderService.addReceipt((Map<Integer, Cart>) session.getAttribute("cart")) == true){
+            session.removeAttribute("cart");
+            return HttpStatus.OK;
+        }
+            
+        
+        return HttpStatus.BAD_REQUEST;
+    }
+    
 }

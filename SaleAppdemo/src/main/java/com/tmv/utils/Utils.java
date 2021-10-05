@@ -6,6 +6,7 @@
 package com.tmv.utils;
 
 import com.tmv.pojos.Cart;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,5 +21,20 @@ public class Utils {
                 q += c.getQuantity();
         
         return q;
+    }
+    
+    public static Map<String, String> cartStats(Map<Integer, Cart> cart){
+        Long s = 0l;
+        int q = 0;
+        if(cart != null)
+            for(Cart c: cart.values()){
+                q += c.getQuantity();
+                s += c.getQuantity()*c.getPrice();
+            }
+        Map<String, String> kq = new HashMap<>();
+        kq.put("counter", String.valueOf(q));
+        kq.put("amount", String.valueOf(s));
+        
+        return kq;
     }
 }
