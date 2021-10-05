@@ -50,7 +50,6 @@ public class Comment implements Serializable{
     private Product product;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
     private User user;
     @Column(name = "created_date")
     @Temporal(javax.persistence.TemporalType.DATE)

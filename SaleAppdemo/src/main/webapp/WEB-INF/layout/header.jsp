@@ -27,13 +27,43 @@
               <a class="nav-link" href="${catPath}">${cate.name}</a>
             </li>
         </c:forEach>
-            <li>
+            <li class="nav-item">
                 <a href="<c:url value="/cart"/>" class="nav-link text-warning h5">
                     <i class="fas fa-shopping-cart"></i>
                     <div class="badge badge-danger" id="cartCounter">${cartCounter}</div>
                 </a>
             </li>
-    </ul>
+            <c:if test="${pageContext.request.userPrincipal.name == null}">
+                <li class="nav-item">
+                    <a href="<c:url value="/login"/>" class="nav-link text-warning h5">
+                        <i class="fas fa-user">Dang nhap</i>
+                    </a>
+                </li>
+            </c:if>
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <li class="nav-item">
+                    <a href="<c:url value="/"/>" class="nav-link text-success h5">                        
+                        <c:if test="${currentUser.avatar != null}" >
+                            <img style="width: 40px" class="rounded-circle" src="${currentUser.avatar}"  alt="userImg"/>
+                        </c:if>
+                        <c:if test="${currentUser.avatar == null}" >
+                            <i class="fas fa-user">${pageContext.request.userPrincipal.name}</i>
+                        </c:if>  
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<c:url value="/logout"/>" class="nav-link text-success h5">
+                        <i class="">Dang xuat</i>
+                    </a>
+                </li>
+            </c:if> 
+            <li class="nav-item">
+                <a href="<c:url value="/register"/>" class="nav-link text-warning h5">
+                     <i class="fas fa-check-circle">Dang Ky</i>
+                </a>
+            </li>
+            
+
   </div>
 </nav>
   <br>

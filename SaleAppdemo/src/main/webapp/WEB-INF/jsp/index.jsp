@@ -9,7 +9,10 @@
 <!DOCTYPE html>
 <h1 class="text-center text-danger">WEB BAN HANG TRUC TUYEN</h1>
 ${productCounter}
-   
+
+<c:if test="${currentUser != null}">
+    ${currentUser.email} - ${currentUser.firstName}
+</c:if>
 <ul class="pagination">
     <c:forEach begin="1" end="${Math.ceil(productCounter/9)}" var="page">
         <li class="page-item"><a class="page-link" href="<c:url value="/"/>?page=${page}">${page}</a></li>

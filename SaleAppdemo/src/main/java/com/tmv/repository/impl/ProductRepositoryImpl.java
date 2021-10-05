@@ -78,6 +78,7 @@ public class ProductRepositoryImpl implements ProductRepository{
         Session session = this.sessionFactory.getObject().getCurrentSession();
         Query q = session.createQuery("Select Count(*) From Product");
         
+        //Where product.id=:id
         
         return Long.parseLong(q.getSingleResult().toString());
     }

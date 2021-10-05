@@ -46,7 +46,7 @@
 </div>
 
 <div id="commentArea">
-    <c:forEach items="${productId.commentCollection}" var="comments" >
+    <c:forEach items="${comment}" var="comments" >
     <div class="row">
         <div class="col-md-2" style="padding: 2px">
             <img src="https://res.cloudinary.com/dwsyse8jk/image/upload/v1630358291/uuylm0wbfblm3bfd1jdn.png"" class="rounded-circle img-fluid" alt="Cinque Terre">
@@ -58,7 +58,12 @@
     </div>
     <br></br>
     </c:forEach>
-</div>    
+</div>
+<ul class="pagination">
+    <c:forEach begin="1" end="${Math.ceil(countComment/3)}" var="page">
+        <li class="page-item"><a class="page-link" href="<c:url value="/products/${productId.id}"/>?page=${page}">${page}</a></li>
+    </c:forEach>    
+</ul>    
 
 
 <script>

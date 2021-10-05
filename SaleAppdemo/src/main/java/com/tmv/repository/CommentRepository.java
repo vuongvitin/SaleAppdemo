@@ -6,6 +6,7 @@
 package com.tmv.repository;
 
 import com.tmv.pojos.Comment;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,6 @@ import com.tmv.pojos.Comment;
  */
 public interface CommentRepository {
     Comment addComment(Comment c);
+    Long countCommentByProductId(int productId);
+    List<Comment> getCommentByProductId(int productId, int page);
 }

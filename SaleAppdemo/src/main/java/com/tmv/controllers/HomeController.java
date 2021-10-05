@@ -39,10 +39,12 @@ public class HomeController {
     public void commmonAttrs(Model model, HttpSession session){
         model.addAttribute("categories", this.categoryService.getCategories());
         model.addAttribute("cartCounter", Utils.countCart((Map<Integer, Cart>) session.getAttribute("cart")));
+        model.addAttribute("currentUser", session.getAttribute("currentUser"));
     }
     
     @RequestMapping("/")
-    public String index(Model model, @RequestParam(required = false) Map<String, String> params){
+    public String index(Model model, @RequestParam(required = false) Map<String, String> params,
+            HttpSession session){
         
         String kw = params.getOrDefault("kw", null);
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
@@ -60,6 +62,7 @@ public class HomeController {
         model.addAttribute("trendProducts", this.productService.getTrendProduct(6));
         model.addAttribute("mostDisProducts", this.productService.getMostDiscuss(6));
        
+        
         
         return "index";
     }

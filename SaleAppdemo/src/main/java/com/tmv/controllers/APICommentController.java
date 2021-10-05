@@ -6,9 +6,11 @@
 package com.tmv.controllers;
 
 import com.tmv.pojos.Comment;
+import com.tmv.pojos.User;
 import com.tmv.repository.CommentRepository;
 import com.tmv.service.CommentService;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,16 +31,20 @@ public class APICommentController {
     
     
     @PostMapping(path = "/api/add-comment", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Comment> addComment(@RequestBody Map<String, String> params){
-        try{
+    public ResponseEntity<Comment> addComment(@RequestBody Map<String, String> params, HttpSession session){
+        User u = (User) session.getAttribute("currentUser");
+        if(u != null){
+            try{
             String content = params.get("content");
             int ProductId = Integer.parseInt(params.get("productId"));
             
-            Comment c = this.commentService.addComment(content, ProductId);
+            Comment c = this.commentService.addComment(content, ProductId, u);
             return new ResponseEntity<>(c, HttpStatus.CREATED);
         }catch(HibernateException ex){
             ex.printStackTrace();
         }
+        }
+        
         
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }

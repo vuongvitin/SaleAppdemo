@@ -6,11 +6,14 @@
 package com.tmv.service;
 
 import com.tmv.pojos.User;
-
+import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 /**
  *
  * @author PC
  */
-public interface UserService {
+public interface UserService extends UserDetailsService{
     User getUserByID(int userId);
+    boolean addUser(User user);
+    List<User> getUser(String username); 
 }

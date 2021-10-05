@@ -33,7 +33,7 @@ function addComment(productId){
         
         area.innerHTML = `<div class="row">
                 <div class="col-md-2" style="padding: 2px">
-                    <img src="https://res.cloudinary.com/dwsyse8jk/image/upload/v1630358291/uuylm0wbfblm3bfd1jdn.png" class="rounded-circle img-fluid" alt="Cinque Terre">
+                    <img src="${data.user.avatar}" class="rounded-circle img-fluid" alt="Cinque Terre">
                 </div>
                 <div class="col-md-10 mydate">
                     <p>${data.content}</p>

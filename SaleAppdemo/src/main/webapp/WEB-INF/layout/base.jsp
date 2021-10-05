@@ -27,15 +27,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     </head>
     <body>
+        <!-- HEADER -->
+        <tiles:insertAttribute name="header" />
         <div class="container">
-            <!-- HEADER -->
-            <tiles:insertAttribute name="header" />
             <!-- CONTENT -->
             <tiles:insertAttribute name="content" />
-            <!-- FOOTER -->
-            <tiles:insertAttribute name="footer" />
         </div>
-        
+        <!-- FOOTER -->
+        <tiles:insertAttribute name="footer" />
         <script src="<c:url value="/js/main.js" />" ></script>
     </body>
 </html>

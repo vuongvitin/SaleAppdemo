@@ -6,6 +6,7 @@
 package com.tmv.repository;
 
 import com.tmv.pojos.User;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,6 @@ import com.tmv.pojos.User;
  */
 public interface UserRepository {
     User getUserById(int userId);
+    boolean addUser(User user);
+    List<User> getUser(String username);
 }
