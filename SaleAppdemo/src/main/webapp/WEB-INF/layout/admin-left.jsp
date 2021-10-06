@@ -15,10 +15,10 @@
         <a class="nav-link" href="<c:url value="/admin/category-stats" />">Thong ke san pham theo danh muc</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Thong ke doanh thu theo tung san pham</a>
+      <a class="nav-link" href="<c:url value="/admin/product-stats" />">Thong ke doanh thu theo tung san pham</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Thong ke doanh thu theo thoi gian</a>
+      <a class="nav-link" href="<c:url value="/admin/product-month-stats" />">Thong ke doanh thu theo thang</a>
     </li>
   </ul>
 

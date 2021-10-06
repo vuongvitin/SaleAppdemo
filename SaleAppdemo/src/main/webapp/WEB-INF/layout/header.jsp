@@ -67,7 +67,7 @@
   </div>
 </nav>
   <br>
-  <form class="form-inline" action="">
+ <form class="form-inline" action="">
         <div class="form-group">
             <label for="sel1" class="text-danger font-weight-bold h3"">Giá từ:</label>
             <select class="form-control" id="sel1" name="fp">

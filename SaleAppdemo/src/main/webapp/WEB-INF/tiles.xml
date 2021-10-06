@@ -47,8 +47,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="BASE" />
     </definition>
     <definition name = "category-stats" extends="baseAdminLayout">
-        <put-attribute name="title" value="Thong ke theo loai san pham theo doanh muc"/>
+        <put-attribute name="title" value="Thong ke san pham theo doanh muc"/>
         <put-attribute name="content" value="/WEB-INF/jsp/category-stats.jsp" />
+    </definition>
+    <definition name = "product-stats" extends="baseAdminLayout">
+        <put-attribute name="title" value="Thong ke doanh thu theo san pham"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/product-stats.jsp" />
+    </definition>
+    <definition name = "product-month-stats" extends="baseAdminLayout">
+        <put-attribute name="title" value="Thong ke doanh thu theo thang"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/product-month-stats.jsp" />
     </definition>
     
 

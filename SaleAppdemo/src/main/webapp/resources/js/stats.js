@@ -37,3 +37,54 @@ function cateChart(id, cateLabels=[], cateInfo=[]){
     
 }
 
+function productChart(id, productLabels=[], productInfo=[] ){
+      
+    let colors=[]
+    for(let i = 0; i < productInfo.length; i++)
+        colors.push(generateColor())
+    
+    const data = {
+  labels: productLabels,
+  datasets: [{
+    label: 'Thong doanh thu theo san pham',
+    data: productInfo,
+    backgroundColor: colors,
+    hoverOffset: 4,
+    borderColor: 'rgb(75, 192, 192)'
+    }]
+  };
+
+    const config = {
+        type: 'line',
+        data: data,
+      };
+      
+    let ctx = document.getElementById(id).getContext("2d");
+    new Chart(ctx, config)  
+}
+
+function productMonthChart(id, productMonthLabels=[], productMonthInfo=[] ){
+      
+    let colors=[]
+    for(let i = 0; i < productMonthInfo.length; i++)
+        colors.push(generateColor())
+    
+    const data = {
+  labels: productMonthLabels,
+  datasets: [{
+    label: 'Thong doanh thu theo thang',
+    data: productMonthInfo,
+    backgroundColor: colors,
+    hoverOffset: 4,
+    borderColor: 'rgb(75, 192, 192)'
+    }]
+  };
+
+    const config = {
+        type: 'bar',
+        data: data,
+      };
+      
+    let ctx = document.getElementById(id).getContext("2d");
+    new Chart(ctx, config)  
+}
