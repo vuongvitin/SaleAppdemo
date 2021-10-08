@@ -82,9 +82,9 @@ public class StatsRepositoryImpl implements StatsRepository{
         }
         
         if(fromDate != null)
-            predicates.add(builder.greaterThanOrEqualTo(rootO.get("giaTour"), fromDate));
+            predicates.add(builder.greaterThanOrEqualTo(rootO.get("createdDate"), fromDate));
         if(toDate != null)
-           predicates.add(builder.lessThanOrEqualTo(rootO.get("giaTour"), toDate));
+           predicates.add(builder.lessThanOrEqualTo(rootO.get("createdDate"), toDate));
         
         
         
